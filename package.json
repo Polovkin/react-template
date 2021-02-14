@@ -16,13 +16,16 @@
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-react": "^7.12.13",
+    "@commitlint/cli": "^11.0.0",
     "autoprefixer": "^10.2.4",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.2",
     "cssnano": "^4.1.10",
+    "cz-customizable": "^6.3.0",
     "html-webpack-plugin": "^5.1.0",
+    "husky": "^5.0.9",
     "mini-css-extract-plugin": "^1.3.6",
     "node-sass": "^5.0.0",
     "postcss": "^8.2.6",
@@ -38,5 +41,17 @@
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {}
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./commitizen.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './commitlint.js'"
+    }
+  }
 }
