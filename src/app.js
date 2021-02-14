@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from "./components/Button";
+import Button from "~/components/Button";
 
-import img from './images/1.png'
+import img from '@/images/1.png'
 
 const title = 'React with Webpack and Babel';
 

@@ -7,8 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDev = process.env.NODE_ENV === 'dev';
 const isProd = !isDev;
 const PATHS = {
-    src: path.join(__dirname, './src'),
+    src: path.join(__dirname, '/src'),
     dist: path.join(__dirname, ('./dist')),
+    assets: path.join(__dirname, (`/assets`)),
 };
 
 module.exports = {
@@ -21,6 +22,10 @@ module.exports = {
     },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
+        alias: {
+            '@': PATHS.assets,
+            '~': PATHS.src,
+        },
     },
     module: {
         rules: [
