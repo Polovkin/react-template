@@ -1,7 +1,7 @@
-// webpack.config.js
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -20,20 +20,80 @@ module.exports = {
                 exclude: /node_modules/,
                 use: ['babel-loader'],
             },
-                //Images
+            //Images
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
                 type: 'asset/resource',
             },
-                //Fonts
+            //Fonts
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
                 type: 'asset/resource',
             },
             // CSS, PostCSS, Sass
             {
-                test: /\.(scss|css)$/,
-                use: ['style-loader',MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+                // scss
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {esModule: false,},
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {sourceMap: true},
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                config: path.resolve(__dirname, `./postcss.config.js`),
+                            },
+                            sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                    /*   {
+                           loader: 'sass-resources-loader',
+                           options: {
+                               resources: [
+                                   './src/assets/scss/core/base.scss',
+                               ],
+                           },
+                       },*/
+                ],
+            },
+            {
+                // css
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: false,
+                        },
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {sourceMap: true},
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                config: path.resolve(__dirname, `./postcss.config.js`),
+                            },
+                            sourceMap: true,
+                        },
+                    },
+                ],
             },
         ],
     },
@@ -45,5 +105,15 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({}),
+        new webpack.HotModuleReplacementPlugin(),
     ],
+    mode: 'development',
+    devServer: {
+        historyApiFallback: true,
+        contentBase: path.resolve(__dirname, './dist'),
+        open: true,
+        compress: true,
+        hot: true,
+        port: 8080,
+    },
 }
