@@ -1,7 +1,7 @@
 {
   "name": "webpack5",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "webpack/index.js",
   "license": "MIT",
   "private": true,
   "scripts": {

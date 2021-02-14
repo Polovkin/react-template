@@ -13,17 +13,20 @@ const PATHS = {
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, `${PATHS.src}/index.js`),
+        main: path.resolve(__dirname, `./webpack/index.js`),
     },
     output: {
         path: path.resolve(__dirname, `${PATHS.dist}`),
         filename: '[name].bundle.js',
     },
+    resolve: {
+        extensions: ['*', '.js', '.jsx'],
+    },
     module: {
         rules: [
             // JavaScript
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
             },
