@@ -1,5 +1,6 @@
 const sortCSSmq = require('sort-css-media-queries');
-
+const isDev = process.env.NODE_ENV === 'dev';
+console.log(isDev);
 module.exports = {
     plugins: [
         require('postcss-preset-env')({browsers: 'last 2 versions',}),
@@ -10,7 +11,7 @@ module.exports = {
         require('postcss-sort-media-queries')({
             sort: sortCSSmq,
         }),
-        require('cssnano')({
+        isDev ? '' : require('cssnano')({
             preset: [
                 'default', {
                     discardComments: {

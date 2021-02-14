@@ -4,12 +4,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const isDev = process.env.NODE_ENV === 'dev';
+const isProd = !isDev;
+const PATHS = {
+    src: path.join(__dirname, './src'),
+    dist: path.join(__dirname, ('./dist')),
+};
+
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, './src/index.js'),
+        main: path.resolve(__dirname, `${PATHS.src}/index.js`),
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, `${PATHS.dist}`),
         filename: '[name].bundle.js',
     },
     module: {
@@ -100,7 +107,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'webpack Boilerplate',
-            template: path.resolve(__dirname, './src/template.html'), // шаблон
+            template: path.resolve(__dirname, `${PATHS.src}/template.html`), // шаблон
             filename: 'index.html', // название выходного файла
         }),
         new CleanWebpackPlugin(),
@@ -110,7 +117,7 @@ module.exports = {
     mode: 'development',
     devServer: {
         historyApiFallback: true,
-        contentBase: path.resolve(__dirname, './dist'),
+        contentBase: path.resolve(__dirname, `${PATHS.dist}`),
         open: true,
         compress: true,
         hot: true,

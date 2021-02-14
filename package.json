@@ -5,8 +5,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack"
+    "start": "cross-env NODE_ENV=dev webpack serve",
+    "build": "cross-env NODE_ENV=prod webpack"
   },
   "keywords": [],
   "author": "",
