@@ -1,6 +1,6 @@
 const sortCSSmq = require('sort-css-media-queries');
 const isDev = process.env.NODE_ENV === 'dev';
-console.log(isDev);
+
 module.exports = {
     plugins: [
         require('postcss-preset-env')({browsers: 'last 2 versions',}),
