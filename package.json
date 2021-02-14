@@ -15,11 +15,23 @@
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/preset-env": "^7.12.16",
     "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.2",
     "html-webpack-plugin": "^5.1.0",
+    "mini-css-extract-plugin": "^1.3.6",
+    "node-sass": "^5.0.0",
+    "postcss-loader": "^5.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0"
   },
   "dependencies": {
-    "clean-webpack-plugin": "^3.0.0"
+    "autoprefixer": "^10.2.4",
+    "clean-webpack-plugin": "^3.0.0",
+    "cssnano": "^4.1.10",
+    "postcss": "^8.2.6",
+    "postcss-sort-media-queries": "^3.4.3",
+    "sort-css-media-queries": "^1.5.2"
   }
 }
