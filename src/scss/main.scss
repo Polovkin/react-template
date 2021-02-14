@@ -5,4 +5,26 @@ $font-color: lch(53 105 40);
 html {
   font-size: $font-size;
   color: $font-color;
+
+  @media (max-width: 1000px) {
+    background-color: red;
+  }
+  @media (min-width: 100px) {
+    background-color: salmon;
+  }
+  @media (max-width: 1200px) {
+    background-color: green;
+  }
+  @media (max-width: 50px) {
+    background-color: sandybrown;
+  }
+  @media (max-width: 1200px) {
+    font-size: 20px;
+  }
+  @media (max-width: 1250px) {
+    background-color: slateblue;
+  }
+  @media (max-width: 50px) {
+    background-color: sandybrown;
+  }
 }
