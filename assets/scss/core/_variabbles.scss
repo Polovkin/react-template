@@ -1,0 +1,21 @@
+$font__line-height: auto;
+$font__size: 18px;
+$font__weight: normal;
+$font__family: 'SourceCodePro';
+$font__style: sans-serif;
+$font__file-name: 'SourceCodePro-';
+$font__path: '~@/assets/fonts/#{$font__file-name}';
+$font__ext: (woff2, woff);
+$font__types: (
+                ('Light', 300, normal),
+                ('Bold', bold, normal),
+                ('Regular', normal, normal),
+);
+
+$header_height: 60px;
+$input__font-size: $font__size;
+$input__font-color: $color__font--primary;
+$input__placeholder-color: gray;
+$input_height: 50px;
+
+$img_path: '~assets/img'

@@ -1,0 +1,53 @@
+@import '../animation/mainBlockAnimations';
+
+
+.custom-checkbox {
+  $orp: 1px;
+
+  %ad {
+    color: #000;
+  }
+
+  @extend h1;
+
+  @extend %ad;
+
+  @mixin asd {
+    color: #f00;
+  }
+  flex: 1;
+
+  position: absolute;
+  z-index: -1;
+
+  margin: 10px 0 0 20px;
+
+  opacity: 0;
+
+  background: {
+    color: #ee82ee;
+    size: cover;
+  };
+
+  &:before {
+    color: #000;
+  }
+
+
+  #polova {
+    color: #f0f8ff;
+  }
+
+  .test {
+    color: #275efe;
+  }
+
+
+  @include breakpoint($phone__all) {
+    color: #000;
+  }
+  @media (max-width: 1000px) {
+    color: #00008b;
+  }
+
+}

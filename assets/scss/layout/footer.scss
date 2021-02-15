@@ -1,0 +1,398 @@
+@import '../animation/mainBlockAnimations';
+
+#main {
+  overflow: visible;
+
+  @include breakpoint($phone__all) {
+    height: calc(100vh - 56px);
+    min-height: unset;
+  }
+}
+
+.main {
+  position: relative;
+
+  &:before {
+    @include pseudoElement(100%, '/main-rainbow.svg');
+
+    top: -30px;
+    left: -200px;
+
+    width: 500px;
+    height: 865px;
+
+    background: {
+      size: contain;
+      repeat: no-repeat;
+    }
+    @include breakpoint($phone__all) {
+      display: none;
+    }
+  }
+
+  &__content {
+    position: relative;
+
+    display: grid;
+
+    height: 100%;
+
+    padding-top: 80px;
+    padding-bottom: 38px;
+
+    grid: {
+      template: {
+        areas: 'subtext subtext empty-title' 'title title empty' 'nav-text nav empty';
+
+        columns: repeat(3, 1fr);
+        rows: 102px repeat(2, auto);
+      }
+    }
+
+    @include breakpoint($desktop__laptop) {
+      grid: {
+        template: {
+          areas: 'subtext subtext empty-title' 'title title empty' 'nav-text nav empty';
+
+          columns: repeat(3, 1fr);
+          rows: 102px auto 60px;
+        }
+      }
+    }
+    @include breakpoint($desktop__laptop-min) {
+      padding: 50px 0;
+
+      grid: {
+        template: {
+          rows: 60px auto 60px;
+        }
+      }
+    }
+    @include breakpoint($tablet__landscape) {
+      padding-top: 80px;
+      padding-bottom: 60px;
+
+      grid: {
+        template: {
+          areas: 'subtext subtext subtext' 'title title title' '. . empty' 'nav-text nav empty' 'nav-text nav empty';
+          rows: 80px repeat(2, auto) repeat(2, 60px);
+
+          columns: repeat(3, 1fr);
+        }
+      }
+    }
+    @include breakpoint($tablet__portrait) {
+      padding-top: 80px;
+
+      grid: {
+        template: {
+          areas: 'subtext subtext subtext' 'title title title' '. . empty' 'nav-text nav-text empty' 'nav nav empty';
+          rows: 1fr 3fr 2fr repeat(2, 1fr);
+
+          columns: repeat(2, 190px) auto;
+        }
+      }
+    }
+    @include breakpoint($phone__all) {
+      padding-top: 30px;
+      padding-right: 15px;
+      padding-left: 15px;
+
+      grid: {
+        template: {
+          areas: 'subtext' 'title' 'nav-text' 'nav';
+          rows: 55px auto 80px 40px;
+
+          columns: auto;
+        }
+      }
+    }
+    @include breakpoint($phone__small) {
+      padding-top: 0 !important;
+      padding-bottom: 0;
+    }
+  }
+
+  &__subtext {
+    grid-area: subtext;
+    @include breakpoint($desktop__laptop) {
+      padding-left: 0;
+    }
+    @include breakpoint($tablet__landscape) {
+      margin-bottom: 0;
+    }
+    @include breakpoint($mobile__all) {
+      margin-bottom: 35px;
+      padding-left: 0;
+    }
+    @include breakpoint($phone__all) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__title {
+    max-width: 715px;
+
+    grid-area: title;
+
+    .text--underline:after {
+      background-color: $color__primary;
+    }
+
+    span {
+      display: inline-flex;
+
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    @include breakpoint(1400px 1700px) {
+      font-size: 70px;
+      line-height: 75px;
+
+      .title__wrap {
+        height: 75px !important;
+      }
+    }
+    @include breakpoint($desktop__laptop) {
+      padding-left: 0;
+    }
+    @include breakpoint($desktop__medium) {
+      align-self: center;
+
+      font-size: 70px;
+      line-height: 75px;
+
+      .title__wrap {
+        height: 78px !important;
+      }
+    }
+    @include breakpoint($desktop__laptop-min) {
+      align-self: center;
+    }
+    @include breakpoint($tablet__landscape) {
+      align-self: center;
+
+      max-width: 600px;
+    }
+    @include breakpoint($tablet__portrait) {
+      align-self: center;
+
+      max-width: unset;
+    }
+    @include breakpoint(
+      ($width__tablet-port $width__desktop-min) (orientation landscape)
+    ) {
+      font-size: 50px;
+      line-height: 55px;
+    }
+    @include breakpoint($tablet__portrait (orientation landscape)) {
+      align-self: self-start;
+    }
+    @include breakpoint($tablet__portrait (orientation portrait)) {
+      font-size: 57px;
+      line-height: 55px;
+    }
+    @include breakpoint($phone__all) {
+      align-self: center;
+
+      max-width: unset;
+
+      padding-left: 0;
+
+      font-size: 36px;
+    }
+  }
+
+  &__nav {
+    align-self: center;
+
+    transform: translateX(100%);
+
+    opacity: 0;
+
+    transition: all ease-in 1s;
+
+    grid-area: nav;
+    justify-self: center;
+
+    &-text {
+      align-self: center;
+
+      grid-area: nav-text;
+
+      span {
+        font-weight: normal;
+      }
+
+      @include breakpoint($phone__all) {
+        margin-bottom: 20px;
+      }
+    }
+
+    @include breakpoint($tablet__all) {
+      justify-self: self-start;
+    }
+  }
+
+  &__bg {
+    height: 100vh;
+
+    &-wrap {
+      flex-direction: column;
+      justify-content: space-between;
+
+      display: flex;
+
+      &--video {
+
+        .section__heading,
+        .section-link {
+          display: none;
+
+          @include breakpoint($phone__all) {
+            display: block;
+          }
+        }
+      }
+
+      .section-link {
+        margin-top: auto;
+      }
+
+      .section__heading,
+      .section-link {
+        position: relative;
+        z-index: z(modal);
+      }
+
+      //@TODO: fix styles
+
+      .section__heading {
+        position: absolute;
+        top: 45px;
+
+        margin-bottom: 0;
+
+        @include breakpoint($phone__all) {
+          position: unset;
+          z-index: unset;
+        }
+        @include breakpoint($desktop__all) {
+          position: absolute;
+          top: 45px;
+        }
+        @include breakpoint($desktop__laptop) {
+          position: absolute;
+          top: 45px;
+        }
+        @include breakpoint($tablet__all) {
+          top: 51px;
+        }
+      }
+    }
+
+    .container {
+      flex-direction: column;
+      justify-content: space-between;
+
+      display: flex;
+
+      height: 100%;
+    }
+
+    @include breakpoint($phone__all) {
+
+      .section-link {
+        flex-direction: column;
+        align-items: flex-start;
+
+        display: flex;
+      }
+    }
+    @include breakpoint($tablet__all) {
+      display: flex;
+
+      background: {
+        position: center;
+
+        image: url('/images/main-frame.jpg');
+        size: cover;
+      }
+
+      &-wrap {
+        flex-grow: 1;
+      }
+    }
+    @include breakpoint($phone__all) {
+      justify-content: center;
+
+      display: flex;
+
+      &-video {
+        margin: auto 0;
+      }
+    }
+  }
+
+  &__block {
+    flex-basis: 40%;
+
+    &-title {
+      margin-bottom: 70px;
+
+      text-align: right;
+    }
+  }
+
+  &__rotate-text {
+    position: absolute;
+    z-index: z(content);
+  }
+
+  &__empty {
+    grid-area: empty;
+
+    &-title {
+      position: relative;
+
+      color: $color__font--gray;
+      font-size: 14px;
+      font-weight: 600;
+
+      letter-spacing: .3em;
+      line-height: 16px;
+      text-transform: uppercase;
+
+      grid-area: empty-title;
+      @include breakpoint($desktop__laptop) {
+        font-size: 10px;
+
+        letter-spacing: .24em;
+      }
+      @include breakpoint($tablet__all) {
+        display: none;
+      }
+      @include breakpoint($phone__all) {
+        display: none;
+      }
+    }
+
+    @include breakpoint($tablet__all) {
+      position: relative;
+
+      .main__empty-img {
+        //position: relative !important;
+        //&:after {
+        //  display: none;
+        //}
+      }
+    }
+    @include breakpoint($phone__all) {
+      display: none;
+    }
+    @include breakpoint($phone__landscape) {
+      display: none;
+    }
+  }
+}

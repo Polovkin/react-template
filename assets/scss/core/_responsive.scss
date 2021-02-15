@@ -1,0 +1,57 @@
+
+
+
+//Breakpoints
+$width__desktop-hd            : 1920px;
+
+$width__desktop-hd-min        : 1600px;
+$max-width__desktop-hd-min    : 1440px;
+
+$width__laptop                : 1366px;
+//XL
+$width__laptop-min            : 1280px;
+$max-width__desktop-min       : 1140px;
+// LG
+$width__tablet-land           : 1024px;
+$max-width__tablet-land       : 960px;
+//MD
+$width__tablet-port           : 750px;
+$max-width__tablet-port       : 720px;
+//SM
+$width__mobile-max            : 576px;
+$max-width__mobile-max        : 540px;
+//XS
+$width__mobile-min            : 320px;
+//Min
+$width__min                   : 100px;
+
+
+
+
+//min 1200
+$mobile__all                  : $width__laptop-min;
+$portrait__all                : $max-width__tablet-land;
+
+//Desktop
+$desktop__all                 : $width__laptop-min;
+$desktop__laptop              : $width__laptop-min    $width__desktop-hd-min;
+$desktop__laptop-min          : ($width__laptop-min   $width__laptop) (max-height ($width__tablet-port - 1) );
+
+//Tablet
+$var-tablet__large            : ($width__laptop-min   $width__laptop) (height 800px 1024px) (orientation landscape) ;
+$var-tablet__small            : ($width__laptop-min   $width__laptop-min) (orientation landscape);
+
+$tablet__all                  :  $width__tablet-port   $width__laptop-min ;
+$tablet__landscape-large      :  $var-tablet__large;
+$tablet__landscape            :  ($width__tablet-land, $width__laptop-min)  (orientation landscape);
+$tablet__portrait             :  screen ($width__tablet-port  $width__tablet-land) (orientation portrait);
+
+$phone__all                   : $width__min            ($width__tablet-port - 1);
+$phone__landscape             : $portrait__all         (max-height 450px);
+$phone__small                 : $width__min            $width__mobile-min;
+//768px   1206px galaxy tab s7
+//adv
+$imgPath: '/assets/img/';
+$iconsPath: $imgPath +'icons/';
+
+
