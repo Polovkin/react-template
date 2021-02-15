@@ -5,7 +5,7 @@ import Context from './context'
 function App () {
   const [todos, setTodos] = React.useState([
     { id: 1, completed: false, title: 'Соблазнить Аню' },
-    { id: 2, completed: false, title: 'Соблазнить Алену' },
+    { id: 2, completed: true, title: 'Соблазнить Алену' },
     { id: 3, completed: false, title: 'Купить хлеб' }
   ])
 
@@ -17,16 +17,19 @@ function App () {
       return todo
     }))
   }
+  function removeTodo (id) {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
 
   return (
+            <Context.Provider value={{ removeTodo: removeTodo }}>
+                <div className='wrapper'>
+                    <h1>React tutorial</h1>
 
-            <div className='wrapper'>
-                <h1>React tutorial</h1>
-
-                <TodoList todos={todos}
-                          onToggle={toggleTodo}/>
-            </div>
-
+                    <TodoList todos={todos}
+                              onToggle={toggleTodo}/>
+                </div>
+            </Context.Provider>
   )
 }
 
