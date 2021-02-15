@@ -1,16 +1,13 @@
-import React from "react";
+import React from 'react'
 
-
-function Button() {
-
-    return (
+function Button () {
+  return (
             <button onClick={() => {
-                console.log(123)
+              console.log(123)
             }}>
                 test
             </button>
-    )
+  )
 }
-
 
 export default Button

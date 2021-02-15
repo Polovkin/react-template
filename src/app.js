@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from "~/components/Button";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Button from '~/components/Button'
 
 import img from '@/images/1.png'
 
-const title = 'React with Webpack and Babel';
+const title = 'React with Webpack and Babel'
 
 ReactDOM.render(
         <div className="container">
@@ -15,4 +15,4 @@ ReactDOM.render(
             <Button/>
         </div>,
         document.getElementById('app')
-);
+)
