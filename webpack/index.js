@@ -3,4 +3,4 @@
 
 import '@/scss/_app.scss'
 
-import '~/app'
+import '~/index'

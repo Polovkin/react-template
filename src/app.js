@@ -1,18 +1,33 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Button from '~/components/Button'
+import React, { useEffect } from 'react'
+import TodoList from './Todo/TodoList'
+import Context from './context'
 
-import img from '@/images/1.png'
+function App () {
+  const [todos, setTodos] = React.useState([
+    { id: 1, completed: false, title: 'Соблазнить Аню' },
+    { id: 2, completed: false, title: 'Соблазнить Алену' },
+    { id: 3, completed: false, title: 'Купить хлеб' }
+  ])
 
-const title = 'React with Webpack and Babel'
+  function toggleTodo (id) {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed
+      }
+      return todo
+    }))
+  }
 
-ReactDOM.render(
-        <div className="container">
-            <h1>React</h1>
-            <p>{title}</p>
-            <img src={img}
-                 alt=""/>
-            <Button/>
-        </div>,
-        document.getElementById('app')
-)
+  return (
+
+            <div className='wrapper'>
+                <h1>React tutorial</h1>
+
+                <TodoList todos={todos}
+                          onToggle={toggleTodo}/>
+            </div>
+
+  )
+}
+
+export default App
