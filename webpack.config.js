@@ -34,10 +34,10 @@ module.exports = {
           name: 'vendors',
           test: /node_modules/,
           chunks: 'all',
-          enforce: true,
-        },
-      },
-    },
+          enforce: true
+        }
+      }
+    }
   },
   module: {
     rules: [
@@ -65,7 +65,9 @@ module.exports = {
           'style-loader',
           {
             loader: MiniCssExtractPlugin.loader,
-            options: { esModule: false }
+            options: {
+              esModule: false
+            }
           },
           {
             loader: 'css-loader',

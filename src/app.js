@@ -1,18 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Button from '~/components/Button'
 
-import img from '@/images/1.png'
+import Index from './index'
 
 const title = 'React with Webpack and Babel'
 
 ReactDOM.render(
         <div className="container">
-            <h1>React</h1>
-            <p>{title}</p>
-            <img src={img}
-                 alt=""/>
-            <Button/>
+           <Index/>
         </div>,
         document.getElementById('app')
 )
