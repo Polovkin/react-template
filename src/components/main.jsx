@@ -1,14 +1,40 @@
-import React from 'react'
-import { useAlert } from '~/alert/AlertContext'
+import React, { useState, useEffect } from 'react'
+
+function useLogger (value) {
+  useEffect(() => {
+    console.log('Value changed: ', value)
+  }, [value])
+}
+
+function useInput (initialValue) {
+  const [value, setValue] = useState(initialValue)
+
+  const onChange = event => {
+    setValue(event.target.value)
+  }
+
+  const clear = () => setValue('')
+
+  return {
+    bind: { value, onChange },
+    value,
+    clear
+  }
+}
 
 export default function Main () {
-  const { toggle } = useAlert()
+  const input = useInput('')
+
+  useLogger(input.value)
+
   return (
             <>
-                <h1>Hi context</h1>
-                <button onClick={toggle}
-                        className={'btn btn-primary'}>Show alert
-                </button>
+                <div className={'container pt-3'}>
+                    <input type="text" {...input.bind}/>
+                    <button className={'btn btn-warning'} onClick={() => input.clear()}>Clear</button>
+                    <hr/>
+                    <h1>{input.value}</h1>
+                </div>
             </>
   )
 }
